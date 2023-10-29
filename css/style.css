@@ -87,3 +87,21 @@ body {
     width: 0; /* останется невидимым до тех пор пока не наведем курсор на (контейнер)  */
 }
 /* до этой строчки были созданы (прописаны) базовые стилевые свойства */
+
+.ads {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 24px;
+    background: linear-gradient(90deg, #3800AF 0%, #BF7204 98%, #C27500 100%, #C27500 100%);
+}
+
+.ads__text {
+    color: white; 
+    font-size: 16px; 
+    font-weight: 400;
+    line-height: 100%;
+    max-width: 166px;
+    width: 100%;
+}
