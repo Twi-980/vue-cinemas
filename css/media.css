@@ -13,6 +13,30 @@
     .container {
         max-width: 540px;
     }
+
+    .header__nav {
+        padding: 25px /* (29-4px) */ 0;
+    }
+
+    .header__menu {
+        display: flex;
+    }
+
+    .header__menu:focus + /* (обращение к соседнему элементу в index.html) */ .header__list {
+        left: 0;
+    }
+
+    .header__list {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 200px;
+        background: rgba(1, 3, 5, 0.80); 
+        backdrop-filter: blur(15px);
+        text-align: center;
+        transition: 500ms linear;
+    }
 }
 @media(max-width: 576px) {
     .container {
