@@ -15,6 +15,20 @@
     box-sizing: border-box;
 }
 
+*::-webkit-scrollbar { /* отвечает за саму белую линию не за ползунок */
+    width: 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-corner { /* отвечает за уголочек нижни в правой стороне */
+    background: var(--title);
+}
+
+*::-webkit-scrollbar-thumb { /* сам ползунок */
+    background: var(--title);
+    border-radius: 3px;
+}
+
 a {
     text-decoration: none;
 }
@@ -105,6 +119,13 @@ body {
     line-height: 100%;
     max-width: 166px;
     width: 100%;
+}
+
+.header {
+    position: sticky; /* весь остальной контент будет проходить под ним, под навигационной панелью */
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 .header__nav {
@@ -212,4 +233,70 @@ body {
 
 .header__link:hover {
     color: var(--linkHover);
+}
+
+.banner {
+    height: 100vh; /* как обычно */
+    position: relative;
+    display: flex; /* его мы даем родителю, чтобы элементы, еоторые находятся внутри него и не имеют фиксированной высоты, чтобы они растягивались на всю высоту */
+    /* height: 100%; */ /* тот же самы эффект, что и display: flex дает ; */
+}
+
+.banner .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banner::after { /* псевдоэлемент ко всей секции */
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(7, 15, 25, 0.75);
+    position: absolute; /* его тоже нужно выбивать с потока с основного */
+    top: 0;
+    left: 0;
+    z-index: -1; /* утопить под элементы */
+}
+
+.banner__img { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2; /* на один уровень ниже чем background темный */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner__title {
+    color: white; 
+    font-size: 64px; 
+    font-family: 'Montserrat'; 
+    font-weight: 700; 
+    line-height: 100%;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+}
+
+.banner_desc {
+    text-align: justify; 
+    color: #C8C8C8; 
+    font-size: 16px; 
+    font-family: 'Montserrat'; 
+    font-weight: 400; 
+    line-height: 150%; 
+    max-width: 570px;
+    width: 100%;
+    margin-bottom: 50px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+
+.banner__btns {
+    display: flex;
+    column-gap: 30px;
 }
