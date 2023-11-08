@@ -10,6 +10,17 @@
         justify-items: center;
         row-gap: 30px;
     }
+
+    .collections__cards {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 30px;
+    }
+
+    .collections__item {
+        max-width: 600px; /* чтобы ее увеличить */
+        height: 300px; 
+    }
 }
 @media(max-width: 992px) {
     .container {
@@ -87,6 +98,11 @@
     .cartoons__video {
         width: 85%;
     }
+
+    .collections__title {
+        margin: 0 auto 30px; /* так как мы для него давали свойство max-content, у него ширина зависит от содержимого, мы его с помощью text-align: center по центру поставить не сможем потому что у него нет центра, он занимает все свое свободное пространство */
+
+    }
 }
 @media(max-width: 576px) {
     .container {
@@ -107,4 +123,13 @@
         padding: 30px 0;
     }
 
+    .collections__item {
+        max-width: 350px;
+        height: 193px;
+    }
+
+    .collections__item-title {
+        max-width: 200px;
+        width: 100%;
+    }
 }

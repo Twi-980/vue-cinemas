@@ -478,3 +478,103 @@ body {
     -webkit-line-clamp: 5;
     overflow: hidden;
 }
+
+.collections {
+    padding-top: 61px;   
+}
+
+.collections:hover .title::after {
+    width: 100%;
+    left: 0; /* а то псевдоэлемент уйдет в сторону */
+}
+
+.collections__cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.collections__item /* родитель .collections__img */ {
+    max-width: 350px;
+    width: 100%;
+    height: 193px; /* высоту тоже нужно будет задавать, потому что у нас контент будет маленьким только иконка и заголовок, все остальное  мы будем ставить с помощью position absolute */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    overflow: hidden; /* все что будет вываливаться за вот эти скругленные углы мы будем скрывать */
+}
+
+.collections__item::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(270deg, rgba(7, 15, 25, 0.56) 0%, rgba(49.08, 113.69, 9.47, 0.56) 100%);
+}
+
+.collections__item:hover .collections__img {
+    transform: scale(1.2);
+}
+
+.collections__item:hover .collections__item-title {
+    transform: scale(0);
+}
+
+.collections__item:hover .collections__icon {
+    transform: scale(1.5) rotateX(180deg) translateY(-15px);
+}
+
+.collections__item:hover .collections__line:nth-last-of-type(2) {
+    transform: translateY(-200% /* при адаптации размер карточки может поменяться и немножко будет торчать если мы сделаем меньше */);
+}
+
+.collections__item:hover .collections__line:nth-last-of-type(1) {
+    transform: translateY(200%);
+}
+
+.collections__img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    object-fit: cover; /* если это не добавим, то картинка будет постоянно теряять свои пропорции */
+    transition: 500ms;
+}
+
+.collections__line {
+    height: 90%; /* 90% от родителя (от всей высоты карточки), всерху и снизу остались отступы по 5% */
+    transform: translateY(-50%); /* поставить по центру 1 действие */
+    position: absolute;
+    top: 50%; /* поставить по центру 2 действие, сместит картинку ровно на 50%, затем с помощью свойства transform: translateY(-50%) мы возьмем половино от высоты карточки и поднимим в минус 50%, тогда она выравнивается ровно по центру*/
+    transition: 500ms;
+}
+
+.collections__line:nth-last-of-type(1) /* обращение к порядковому номеру с конца, но не по порядковому номеру внутри самого элемента, по типу нашего тега img, мы берем именно последний тег img */ {
+    right: 7px;
+}
+
+.collections__line:nth-last-of-type(2) {
+    left: 7px;
+}
+
+.collections__icon {
+    transition: 500ms;
+    margin-bottom: 15px;
+}
+
+.collections__item-title {
+    color: white; 
+    font-size: 20px; 
+    font-weight: 700;
+    text-align: center;
+    line-height: 100%;
+}
+    
