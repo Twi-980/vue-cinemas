@@ -26,6 +26,14 @@
     .container {
         max-width: 720px;
     }
+
+    .series__item:nth-child(2) { /* приоритет у nth child выше так как тут ижет фактически два селектора чем series__item */
+        grid-column: span 4;
+    }
+
+    .series__item {
+        grid-column: span 2;
+    }
 }
 @media(max-width: 768px) {
     .container {
@@ -99,12 +107,23 @@
         width: 85%;
     }
 
-    .collections__title {
+    .title {
         margin: 0 auto 30px; /* так как мы для него давали свойство max-content, у него ширина зависит от содержимого, мы его с помощью text-align: center по центру поставить не сможем потому что у него нет центра, он занимает все свое свободное пространство */
-
     }
+
+    .footer .container {
+        flex-direction: column;
+        row-gap: 30px;
+    }
+
+    .footer__desc {
+        font-size: 15px;
+        text-align: center;/*  если слово слоамется,оно позиционировалось от центра */
+    }
+   
 }
 @media(max-width: 576px) {
+
     .container {
         max-width: auto;
     }
@@ -131,5 +150,26 @@
     .collections__item-title {
         max-width: 200px;
         width: 100%;
+    }
+
+    .series__cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .series__item {
+        grid-column: span 2 !important /*  (приоритет, чтобы отабатывал для всех карточек, не только для которых нет nth child, но и для тех, у которых он есть, чтобы тоже занимали 2 колонки) */;
+        grid-row: span 1 !important;
+    }
+
+    .series__item-desc {
+        display: none; /* описание уберем */
+    }
+
+    .series__item-title {
+        font-size: 24px !important;
+    }
+
+    .series__item:hover .series__item-btn {
+        transform: translateY(-25px);
     }
 }
